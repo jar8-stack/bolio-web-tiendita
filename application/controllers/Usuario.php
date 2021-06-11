@@ -142,13 +142,15 @@ class Usuario extends CI_Controller {
 				);
 				if(isset($_POST) && count($_POST) > 0){
 					$url = 'http://localhost:3000/Usuario/'.$id_usuario;
-					$ch = curl_init($url);
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$data_json = json_encode($params);
+
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
 					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-					curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-					$response = curl_exec($ch);
-					echo 'Status-Code: ' . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-					echo '<pre>';print_r(json_decode($response, true));echo'</pre>';
+					curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$response  = curl_exec($ch);
 					curl_close($ch);
 					redirect("usuario");
 					

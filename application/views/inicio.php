@@ -270,7 +270,14 @@
   						</a>
 
   				</ul>
+				  <ul id="accordion-menu">
+  						<a href="<?php echo base_url('empleado'); ?>" class="dropdown-toggle">
+  							<span class="micon dw dw-house-1"></span><span class="mtext">Administrar empleados</span>
+  						</a>
+
+  				</ul>
   			</div>
+  		</div>		
   		</div>
   	</div>
   	<div class="mobile-menu-overlay"></div>
