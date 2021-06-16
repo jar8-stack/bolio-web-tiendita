@@ -276,6 +276,12 @@
   						</a>
 
   				</ul>
+				  <ul id="accordion-menu">
+  						<a href="<?php echo base_url('producto'); ?>" class="dropdown-toggle">
+  							<span class="micon dw dw-house-1"></span><span class="mtext">Administrar Productos</span>
+  						</a>
+
+  				</ul>
   			</div>
   		</div>		
   		</div>

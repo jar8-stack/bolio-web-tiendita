@@ -12,36 +12,49 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Administración de proveedores</h3>
+                <h3 class="box-title">Administración de Productos</h3>
               <div class="box-tools">
               <a href="<?php echo site_url('inicio'); ?>" class="btn btn-success btn-sm">Volver al tablero</a>
                 </div>
                 <br>
                 <div class="box-tools">
-                <a href="<?php echo site_url('proveedor/loadAdd'); ?>" class="btn btn-success btn-sm">Add</a>                  
+                <a href="<?php echo site_url('producto/loadAdd'); ?>" class="btn btn-success btn-sm">Add</a>                  
                   </div>   
             <div class="box-body table-responsive no-padding">
                 <table id="example1" class="table table-striped">
                     <thead>
                     <tr>                    
-                    <th>Id proveedor</th>
-                    <th>Descripcion</th>
-                    <th>Numero de proveedor</th>
+                    <th>Nombre de producto</th>
+                    <th>Precio</th>                    
+                    <th>Stock</th>
+                    <th>Proveedor</th>
+                    <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php 
-                            if(isset($proveedores) && $proveedores!=null)
+                            if(isset($productos) && $productos!=null)
                             {
-                            foreach($proveedores as $t){ ?>
+                            foreach($productos as $t){ ?>
                                         <tr>                                        
-                                        <td><?php echo $t['id_proveedor']; ?></td>
-                                        <td><?php echo $t['nombre']; ?></td>
-                                        <td><?php echo $t['contacto']; ?></td>
-                                        <td><a href="<?php echo site_url('proveedor/edit/'.$t['id_proveedor']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                                        <td><?php echo $t['descripcion']; ?></td>
+                                        <td><?php echo $t['precio']; ?></td>
+                                        <td><?php echo $t['stock']; ?></td>
+                                        <td><?php 
+                                        
+                                        $idProveedor=  $t['id_proveedor']; 
+
+                                        foreach($proveedores as $proveedor){
+                                            if($proveedor['id_proveedor']==$idProveedor){
+                                                echo $proveedor['nombre'];
+                                            }
+                                        }
+                                        
+                                        ?></td>                                        
+                                        <td><a href="<?php echo site_url('producto/edit/'.$t['id_producto']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
                                             <a
                                             onclick="return confirm('Are you sure You want to delete?')"
-                                                href="<?php echo site_url('proveedor/delete/'.$t['id_proveedor']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                                                href="<?php echo site_url('producto/delete/'.$t['id_producto']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
                                         </td>
                                         </tr>
                                         <?php }
